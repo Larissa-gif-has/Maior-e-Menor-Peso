@@ -1,0 +1,48 @@
+pessoas = list()
+dados = list()
+maiorNome = menorNome = ''
+nomeMaior = list()
+nomeMenor = list()
+maiores = list()
+menores = list()
+maior = 0
+menor = 0
+while True:
+    dados.append(str(input('Nome:')))
+    dados.append(float(input('Peso:')))
+    pessoas.append(dados[:])
+    cont = len(pessoas)
+    dados.clear()
+    resp = input('Quer continuar? [S/N]')
+    if resp == 'n':
+        break
+print(f'Voce cadastrou {cont} pessoas')
+for p in pessoas:
+    if maior == 0:
+        maior = p[1]
+        maiores.append(maior)
+    else:
+        if p[1] > maior:
+            del maiores[0]
+            maior = p[1]
+            maiores.append(maior)
+for p in pessoas:
+    if p[1] in maiores:
+        nomeMaior.append(p[0])
+
+
+for p in pessoas:
+    if menor == 0:
+        menor = p[1]
+        menores.append(menor)
+    else:
+        if p[1] < menor:
+            del menores[0]
+            menor = p[1]
+            menores.append(menor)
+for p in pessoas:
+    if p[1] in menores:
+        nomeMenor.append(p[0])
+
+print(f'O maior peso foi de {maior:.1f}Kg . Peso de {nomeMaior}')
+print(f'O menor peso foi de {menor:.1f}Kg . Peso de {nomeMenor}')
